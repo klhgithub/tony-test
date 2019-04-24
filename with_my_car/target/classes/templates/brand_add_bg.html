@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>新增品牌</title>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <link rel="stylesheet" href="../static/css/jquery.wysiwyg.old-school.css"/>
+
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../static/js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="../static/js/main.js"></script>
+    <link rel="stylesheet" href="../static/css/style2.css"/>
+
+</head>
+<body class="modal white">
+
+
+<!--     内容      -->
+<div id="content" class="white" style="margin-left: 300px;margin-top: 42px;">
+    <div class="bloc">
+        <div class="title">新增品牌<a class="toggle"></a></div>
+        <div class="content" style="height:320px;">
+            <form action="brand_manage_bg.html" method="">
+                <div class="input">
+                    <label for="input2">品牌名称</label>
+                    <input type="text" id="input2" name="" width="50px">
+                </div>
+                <div class="input">
+                    <label for="input3">品牌logo</label>
+                    <input type="file" id="input3" name="" width="50px">
+                </div>
+                <div class="submit">
+                    <input type="button" name="button" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+</body>
+<br>
+<script type="text/javascript">
+    $("input[name='button']").click(function () {
+        window.location.href="brand_manage_bg.html";
+    });
+</script>
+</html>

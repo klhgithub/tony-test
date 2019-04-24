@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>会员管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/jquery.wysiwyg.old-school.css"/>
+
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style2.css"/>
+</head>
+<body>
+
+<!--     内容      -->
+<div id="content" class="white">
+    <h1><img src="../static/images/posts.png" alt="" />会员管理</h1>
+    <!--操作栏-->
+    <div class="bloc">
+        <!--<div class="title"> 操作 <a class="toggle"></a></div>
+        <div class="content dashboard">
+            <div class="center" style="display: block; width: auto;">
+                <a href="add_info_bg.html" class="shortcut zoombox w500 h320"> <img src="../images/glyph-add.png" alt="" width="48" height="48">
+                    添加配件 </a>
+                <div class="cb"></div>
+            </div>
+        </div>-->
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="search" placeholder="手机号/姓名/昵称"/>&nbsp;&nbsp;&nbsp;
+        性别:<select id="gender" style="display:inline;">
+        <option value="男">男</option>
+        <option value="女">女</option>
+    </select>&nbsp;&nbsp;
+        注册时间:<input type="date" name="firstData" />—<input type="date" name="secondData" />
+        <input type="button" value="搜索" />
+    </div>
+
+    <!--<p th:text="${messeg}"></p>-->
+    <div class="bloc">
+        <div class="title"> 配件列表 <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="toggle"></a>
+        </div>
+        <form id="form1" action="member_details_bg" method="post">
+            <input type="hidden" id="userid" name="id" />
+        </form>
+        <div class="content">
+            <table>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>账号</th>
+                    <th>昵称</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>注册时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="memb:${membs}">
+                    <td th:text="${memb.id}"></td>
+                    <td th:text="${memb.username}">英朗TX</td>
+                    <td th:text="${memb.nickname}">12.00</td>
+                    <td th:text="${memb.name}">2014-01-16 2:12:32</td>
+                    <td th:text="${memb.gender}">David</td>
+                    <td th:text="${memb.register_time}">2019/4/12</td>
+
+                    <td><a th:onclick="|tijiao(${memb.id})|">详情</a></td>
+                </tr>
+
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button class="prev">«</button>
+                <span th:each="num:${nums}">
+                <a th:if="${num}==${page}" th:text="${num}" th:href="'getAllMem_bg?pageNum='+${num}"  class='current'></a>
+                 <a th:if="${num}!=${page}" th:text="${num}" th:href="'getAllMem_bg?pageNum='+${num}"  ></a>
+                </span>
+                <button  class="next">»</button>
+            </div>
+            <form id="pageform" action="brand_manage_bg" method="post">
+                <input type="hidden" th:value="${page}" name="pageNum" />
+            </form>
+        </div>
+    </div>
+</div>
+<br/>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+</body>
+<script type="text/javascript">
+
+    function tijiao(id){
+        // alert(id);
+        $("#userid").val(id);
+        // alert($("#userid").val());
+        $("#form1").submit();
+
+    }
+    $(".next").click(function(){
+        $("input[name='pageNum']").val(Number($("input[name='pageNum']").val())+1);
+        $("#pageform").submit();
+    })
+    $(".prev").click(function(){
+        $("input[name='pageNum']").val(Number($("input[name='pageNum']").val())-1);
+        $("#pageform").submit();
+    })
+</script>
+<br/>
+</html>

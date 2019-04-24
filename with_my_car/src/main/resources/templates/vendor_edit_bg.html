@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>编辑厂商</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/jquery.wysiwyg.old-school.css"/>
+
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style2.css"/>
+
+</head>
+<body class="modal white">
+
+
+<!--     内容      -->
+<div id="content" class="white" style="margin-left: 300px;margin-top: 42px;">
+    <div class="bloc">
+        <div class="title">编辑厂商<a class="toggle"></a></div>
+        <div class="content" style="height:320px;">
+            <form action="vendor_doedit_bg" method="POST" enctype="multipart/form-data" th:each="vendor:${vendors}">
+                <div class="input">
+                    <label for="input2">厂商名称</label>
+                    <input type="text" th:value="${vendor.vendorname}" id="input2" name="vendorname" width="50px">
+                    <input type="hidden" id="brandname" name="brandname">
+                    <input type="hidden" th:value="${vendor.id}" name="id"/>
+                </div>
+                <div class="input">
+                    <label>所属品牌</label>
+                    <select id="sel" onchange="sel()">
+                        <option >请选择品牌</option>
+                        <option class="sel"  th:each="bran:${brans}" th:text="${bran.brand_name}">奥迪</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <label for="input3">厂商logo</label>
+                    <input type="file" id="input3" name="file" width="50px">
+                </div>
+                <img th:src="${vendor.vendorlogo}" id="img" />
+                <div class="submit">
+                    <input type="submit" name="button" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br/>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+</body>
+<script>
+    $( function () {
+        var bname=$("#bname").val();
+        $("#sel").selected("悍马");
+
+
+    });
+    $("#input3").change(function(){
+        // alert( $(this).val());
+        $("#img").attr("src",$(this).val());
+
+    })
+    function sel(){
+       $("#brandname").val($("#sel option:selected").val());
+       alert($("#brandname").val());
+    }
+</script>
+</html>

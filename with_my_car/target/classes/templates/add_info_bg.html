@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>添加资讯</title>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <link rel="stylesheet" href="../static/css/jquery.wysiwyg.old-school.css"/>
+
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../static/js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="../static/js/main.js"></script>
+    <link rel="stylesheet" href="../static/css/style2.css"/>
+
+</head>
+<body class="modal white">
+
+
+<!--     内容      -->
+<div id="content" class="white" style="margin-left: 300px;margin-top: 42px;">
+    <div class="bloc" style="height: 800px;">
+        <div class="title">新增资讯<a class="toggle"></a></div>
+        <div class="content" style="height:320px;">
+            <form action="" method="">
+                <div class="input">
+                    <label for="input1">*资讯标题</label>
+                    <input type="text" id="input1">
+                </div>
+                <div class="input">
+                    <label>*资讯来源:原创</label>
+                </div>
+                <div class="input">
+                    <label for="input2">*资讯描述</label>
+                    <textarea id="input2" style="width: 272px;height: 40px"></textarea>
+                    <!--<input type="" id="input3" name="name" width="50px">-->
+                </div>
+                <div class="input">
+                    <label>*资讯图片</label>
+                    <input type="file" name="file" width="50px"/>
+                </div>
+                <div class="input">
+                    <label for="input3">*作者</label>
+                    <input type="text" id="input3" name="price" width="50px"/>
+                </div>
+                <div class="input">
+                    <label for="input4">*时间</label>
+                    <input type="text" id="input4" name="price" width="50px"/>
+                </div>
+                <div class="input">
+                    <label for="input5">*标签</label>
+                    <input type="text" id="input5" name="price" width="50px"/>
+                </div>
+                <div class="input">
+                    <label>*操作</label>
+                    <input type="checkbox" value="点赞"/>点赞<input type="checkbox" value="收藏"/>收藏
+                </div>
+                <div class="input">
+                    <label>*正文</label>
+                    <textarea style="width: 272px;height: 40px"></textarea>
+                </div>
+                <div class="submit">
+                    <input type="button" name="button" value="确定"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+</body>
+<br>
+<script type="text/javascript">
+    $("input[name='button']").click(function () {
+        window.location.href = "draft_bg.html";
+    });
+</script>
+</html>

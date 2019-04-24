@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>后台管理系统</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/jquery.wysiwyg.old-school.css">
+<link rel="stylesheet" href="../static/css/style2.css">
+<!-- jQuery AND jQueryUI -->
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../static/js/min.js"></script>
+<!--<script type="text/javascript" src="js/index.js"></script>-->
+<script type="text/javascript" src="../static/js/main.js"></script>
+
+</head>
+<body>
+
+
+
+
+<!--     内容      -->
+<div id="content" class="white">
+<h1><img src="../static/images/posts.png" alt="" >个人中心</h1>
+
+		<!--操作栏-->
+		<div class="bloc">
+				<div class="title"> 操作 <a class="toggle"></a></div>
+		<div>
+		<div style="float: left;"><a href="personalCenter_bg.html" style="font-size:20px">个人中心</a>&nbsp;&nbsp;&nbsp;</div>
+		<div style="float: left;"><a href="changePassword_bg.html" style="font-size:20px">修改密码</a></div>
+		</div>
+		</div>
+	
+		
+<div class="bloc">
+		<div class="title"> 系统标签 <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="toggle"></a></div>
+		<div class="content">
+				<table>
+					<tr>
+						<th>名称：</th>
+						<th><input type="text" placeholder="haha"/></th>
+					</tr>
+					<tr>
+						<th>个人账号：</th>
+						<th><input type="text" placeholder="haha"/></th>
+					</tr>
+					<tr>
+						<th>手机号：</th>
+						<th><input type="text" placeholder="haha"/></th>
+					</tr>
+					<tr>
+						<th>所属角色：</th>
+						<th><input type="text" placeholder="haha"/></th>
+					</tr>
+					<tr>
+						<th>邮箱：</th>
+						<th><input type="text" placeholder="haha"/></th>
+					</tr>
+					<tr>
+						<th>所属部门：</th>
+						<th><input type="text" placeholder="haha"/></th>
+						
+					</tr>
+					
+				</table>
+				<button>保存</button>
+<!--				<div class="pagination"> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="prev">«</a> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">1</a> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="current">2</a> ... <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">22</a> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="next">»</a> </div>
+-->		</div>
+</div>
+</div>
+<br>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+<script>
+	function select(){
+		alert(123);
+	}
+</script>
+
+</body><br>
+
+</html>

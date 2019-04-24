@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>新增厂商</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/jquery.wysiwyg.old-school.css"/>
+
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style2.css"/>
+
+</head>
+<body class="modal white">
+
+
+<!--     内容      -->
+<div id="content" class="white" style="margin-left: 300px;margin-top: 42px;">
+    <div class="bloc">
+        <div class="title">新增厂商<a class="toggle"></a></div>
+        <div class="content" style="height:320px;">
+            <form action="vendor_doadd_bg" id="form1" method="post" enctype="multipart/form-data">
+                <div class="input">
+                    <label for="input2">厂商名称</label>
+                    <input type="text" id="input2" name="vendorname" width="50px">
+                </div>
+                <div class="input">
+                    <label>所属品牌</label>
+                    <input type="hidden" id="brandname" name="brandname"  />
+                    <select id="sel">
+                        <option >请选择品牌</option>
+                        <option th:each="bran:${brans}" th:text="${bran.brand_name}"th:value="${bran.brand_name}">1</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <label for="input3">厂商logo</label>
+                    <input type="file" id="input3" name="file" width="50px">
+                </div>
+                <div class="submit">
+                    <input type="submit" name="button" value="确定" />
+                    <input type="button" onclick="tiaozhuan()" name="button" value="取消" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+</body>
+<br>
+<script type="text/javascript">
+    // $("input[name='button']").click(function () {
+    // });
+    // function add(){
+    //     var factoryname=$("#input2").val();
+    //     var brandname=$("#sel option:selected").val();
+    //     $("#bname").val(brandname);
+    //     var logourl=$("#input3").val();
+    //     console.log(factoryname+brandname+logourl);
+    //     // window.location.href="vendor_manage_bg.html";
+    //     $("#form1").submit();
+    //
+    // }
+    $("#sel").change(function(){
+        $("#brandname").val($("#sel option:selected").val());
+    })
+    function tiaozhuan(){
+        window.location.href="getAllVendor";
+
+    }
+
+</script>
+</html>

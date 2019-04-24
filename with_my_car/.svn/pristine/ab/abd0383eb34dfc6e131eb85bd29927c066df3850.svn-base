@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/jquery.wysiwyg.old-school.css" />
+
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../static/js/min.js"></script>
+    <script type="text/javascript" src="../static/js/main.js"></script>
+    <link rel="stylesheet" href="../static/css/style2.css" />
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+</head>
+
+<body>
+<!--      左侧菜单     -->
+<div id="sidebar">
+    <ul>
+        <li><a><img src="../static/images/layout.png" alt="">会员管理</a>
+            <ul>
+                <!-- <li><a href="pinpai/pinpai.html">品牌管理</a></li> -->
+                <!--<li><a href="product/series.html" target="right">车系管理</a></li>-->
+                <!--<li><a href="product/car.html" target="right">车型管理</a></li>-->
+                <li><a href="member_manage_bg.html" target="right">会员管理</a></li>
+
+            </ul>
+        </li>
+        <li><a><img src="../static/images/comment.png" alt="">资讯管理</a>
+            <ul>
+                <li><a href="draft_bg.html" target="right">草稿箱</a></li>
+                <li><a href="audit_info_bg.html" target="right">资讯审核</a></li>
+                <li><a href="issue_info_bg.html" target="right">资讯发布</a></li>
+                <li><a href="info_list_bg.html" target="right">资讯列表</a></li>
+            </ul>
+        </li>
+
+        <li><a><img src="../static/images/brush.png" alt="">标签定义</a>
+            <ul>
+                <li><a href="tags_bg.html" target="right">标签定义</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/huser.png" alt="">车库型管理</a>
+            <ul>
+                <li><a href="brand_manage_bg.html" target="right">品牌管理</a></li>
+                <li><a href="vendor_manage_bg.html" target="right">厂商管理</a></li>
+                <li><a href="car_model_bg.html" target="right">车系管理</a></li>
+                <li><a href="car_bg.html" target="right">车款管理</a></li>
+                <li><a href="car_parameter_bg.html" target="right">参数分类管理</a></li>
+                <li><a href="car_parameter_manager_bg.html" target="right">参数管理</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/brush.png" alt="">自有商品管理</a>
+            <ul>
+                <li><a href="car_product_bg.html" target="right">自有商品管理</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/lab.png" alt="">活动管理</a>
+            <ul>
+                <li><a href="activity_bg.html" target="right">活动列表</a></li>
+                <li><a href="check_activity_bg.html" target="right">推荐活动</a></li>
+                <li><a href="activity_category_bg.html" target="right">类型管理</a></li>
+                <li><a href="guide_bg.html" target="right">渠道管理</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/brush.png" alt="">消息管理</a>
+            <ul>
+                <li><a href="guideMessage_bg.html" target="right">消息管理</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/brush.png" alt="">标签管理</a>
+            <ul>
+                <li><a href="guideLabel_bg.html" target="right">标签管理</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/brush.png" alt="">角色管理</a>
+            <ul>
+                <li><a href="managementRole_bg.html" target="right">角色管理</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/brush.png" alt="">管理员列表</a>
+            <ul>
+                <li><a href="administrator_bg.html" target="right">管理员列表</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/brush.png" alt="">操作日志</a>
+            <ul>
+                <li><a href="log_bg.html" target="right">操作日志</a></li>
+            </ul>
+        </li>
+        <li><a><img src="../static/images/brush.png" alt="">个人中心</a>
+            <ul>
+                <li><a href="personalCenter_bg.html" target="right">个人中心</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+</body>
+</html>

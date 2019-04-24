@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<!--添加thymeleaf导入-->
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>后台管理系统</title>
+		<link rel="stylesheet" href="../static/css/style.css">
+		<link rel="stylesheet" href="../static/css/jquery.wysiwyg.old-school.css">
+
+
+		<!-- jQuery AND jQueryUI -->
+		<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+		<!--<script src="http://code.jquery.com/jquery-1.10.2.js"></script>-->
+		<!--<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>-->
+		<!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script> <script src="http://code.jquery.com/jquery-migrate-1.1.1.js"></script>-->
+		<script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../static/js/min.js"></script>
+		<!--<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>-->
+		<!--<script type="text/javascript" src="js/index.js"></script>-->
+	</head>
+
+	<body>
+		<script type="text/javascript" src="../static/js/main.js"></script>
+		<link rel="stylesheet" href="../static/css/style2.css">
+		
+		<!--     内容      -->
+		<div id="content" class="white">
+			<h1><img src="../static/images/posts.png" alt="">活动推荐</h1>
+			<div class="bloc">
+				<div class="title"> 记录
+					<a class="toggle"></a>
+				</div>
+
+				<div class="content">
+					
+					<table>
+						<thead>
+							<tr>
+								<th style="width: 50px;"><input type="checkbox" />全选 </th>
+								<th>序号</th>
+								<th>标题</th>
+								<th>活动创建者</th>
+								<th>活动类型</th>
+								<th>时间</th>
+								<th>链接</th>
+								<th>状态</th>
+								<th>点赞量</th>
+								<th>访问量</th>
+								<th>收藏量</th>
+								<th style="width: 152px;">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th><input type="checkbox" /></th>
+								<th>1</th>
+								<th>111</th>
+								<th>路人甲</th>
+								<th>优惠一折</th>
+								<th>2017/03/12-<br/>2017/04/08</th>
+								<th>123</th>
+								<th>未发布</th>
+								<th>0</th>
+								<th>0</th>
+								<th>0</th>
+								<th>
+									<a id="change" class="button">推荐</a>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+					
+					<div class="pagination">
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="prev">«</a>
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">1</a>
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="current">2</a> ...
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a>
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">22</a>
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="next">»</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		<script type="text/javascript">
+			$("#change").click(function(){
+//				alert($("#change").html());
+				if($("#change").html()=="推荐"){
+					$("#change").html("取消推荐");
+					
+					
+					
+					
+				}else{
+					$("#change").html("推荐");
+					
+					
+					
+					
+				}
+			});
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

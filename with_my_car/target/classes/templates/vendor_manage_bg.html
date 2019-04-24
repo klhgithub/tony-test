@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>厂商管理</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/jquery.wysiwyg.old-school.css" />
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style2.css" />
+</head>
+<body>
+
+<!--     内容      -->
+<div id="content" class="white">
+    <h1><img src="images/posts.png" alt="">厂商管理</h1>
+
+    <!--操作栏-->
+    <form id="form1" action="searchVendor" method="post">
+        <div class="bloc">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            品牌:<select id="sel2"  onchange="dd()" >
+            <option  >请选择品牌</option>
+            <option th:each="bran:${brans}"  th:value="${bran.brand_name}" th:text="${bran.brand_name}">奥迪</option>
+        </select>
+            <input type="hidden" id="sel" name="sel" />
+            &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="search" placeholder="请输入厂商名称" />&nbsp;&nbsp;&nbsp;
+             <input type="submit" value="搜索" />
+            <!--<button style="margin-left: 800px;">
+                <a href="brand_manage_bg.html" class="shortcut zoombox w500 h320"> <img src="images/glyph-add.png" alt="" width="24" height="24">
+                添加品牌 </a></button>-->
+            <button id="add" style="margin-left: 800px;"><a  href="vendor_add_bg" >新增厂商</a></button>
+        </div>
+    </form>
+
+    <div class="bloc">
+        <div class="title"> 配件列表 <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="toggle"></a>
+        </div>
+        <div class="content">
+            <table>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>品牌名称</th>
+                    <th>厂商名称</th>
+                    <th>厂商logo</th>
+                    <th>创建时间</th>
+                    <th>功能</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vendor:${vendors}">
+                    <td th:text="${vendor.id}">蓄电池</td>
+                    <td><a th:text="${vendor.brandname}">英朗TX</a></td>
+                    <td th:text="${vendor.vendorname}">蓄电池</td>
+                    <td ><img style=" weidth:150px; height:90px;" th:src="${vendor.vendorlogo}" /></td>
+                    <td th:text="${vendor.createtime}">2014-01-16 2:12:32</td>
+                    <td>
+                        <a class="button editbtn" th:href="'vendor_edit_bg?id='+${vendor.id}">编辑</a>
+                        <a class="button" th:href="'delCarMakeById?id='+${vendor.id}" >删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button class="prev">«</button>
+                <span th:each="num:${nums}">
+                    <a th:if="${num}==${page}" th:text="${num}" th:href="'vendor_manage_bg?pageNum='+${num}"  class='current'></a>
+                    <a th:if="${num}!=${page}" th:text="${num}" th:href="'vendor_manage_bg?pageNum='+${num}"  ></a>
+                </span>
+                <button  class="next">»</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+
+</body>
+<script>
+    function dd(){
+        $("#sel").val($("#sel2 option:selected").val());
+    }
+
+
+
+    $(".next").click(function(){
+        $("input[name='pageNum']").val(Number($("input[name='pageNum']").val())+1);
+        $("#pageform").submit();
+    })
+    $(".prev").click(function(){
+        $("input[name='pageNum']").val(Number($("input[name='pageNum']").val())-1);
+        $("#pageform").submit();
+    })
+</script>
+</html>

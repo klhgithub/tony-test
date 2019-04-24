@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>后台管理系统</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/jquery.wysiwyg.old-school.css">
+<link rel="stylesheet" href="../static/css/style2.css">
+<!-- jQuery AND jQueryUI -->
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../static/js/min.js"></script>
+<!--<script type="text/javascript" src="js/index.js"></script>-->
+<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
+</head>
+<body>
+
+
+
+
+<!--     内容      -->
+<div id="content" class="white">
+<h1><img src="../static/images/posts.png" alt="">消息管理</h1>
+		<!--操作栏-->
+		<div class="bloc">
+				<div class="title"> 操作 <a class="toggle"></a></div>
+				<div class="content dashboard">
+						<div class="center" style="display: block; width: auto;"> 
+						 <a href="guideEditMessage_bg.html" class="shortcut "> <img src="../static/images/glyph-add.png" alt="" width="48" height="48"> 新增</a>
+								<div class="cb"></div>
+						</div>
+				</div>
+		<div>
+			<input name="select" type="text"  placeholder="搜索"/>-
+			<input name="select" type="text"  placeholder="搜索"/>
+			<button onclick="select()">搜索</button>
+		</div>
+		
+		</div>
+	
+		
+<div class="bloc">
+		<div class="title"> 消息管理<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="toggle"></a></div>
+		<div class="content">
+				<table>
+						<thead>
+								<tr>
+										<th>序号</th>
+										<th>标题</th>
+										<th>发送时间</th>
+										<th>发送人</th>
+										<th>操作</th>
+								</tr>
+						</thead>
+						<tbody>
+								<tr>
+										<td>新嘉年华（两厢）</td>
+										<td>0.9-1.0</td>
+										<td>2014-01-16 2:12:32</td>
+										<td>123</td>
+										<td><a title="发送"><img src="../static/images/inbox.png" alt=""></a><a onclick="updateone()" title="修改"><img src="../static/images/edit.png" alt=""></a><a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" title="删除"><img src="../static/images/delete.png" alt=""></a></td>
+								</tr>
+								
+						</tbody>
+				</table>
+<!--				<div class="pagination"> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="prev">«</a> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">1</a> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="current">2</a> ... <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">22</a> <a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="next">»</a> </div>
+-->		
+		</div>
+</div>
+</div>
+
+
+
+<br>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+      </div>
+      <div class="modal-body">
+        
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+<script>
+	function select(){
+		alert(123);
+	}
+	function updateone(){
+		
+		window.location.href="ModifyMessage_bg.html";
+	}
+</script>
+
+</body><br>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<!--添加thymeleaf导入-->
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>后台管理系统</title>
+		<link rel="stylesheet" href="../static/css/style.css">
+		<link rel="stylesheet" href="../static/css/jquery.wysiwyg.old-school.css">
+		<link rel="stylesheet" href="../static/css/motai.css">
+
+		<!-- jQuery AND jQueryUI -->
+		<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../static/js/min.js"></script>
+		<!--<script type="text/javascript" src="js/index.js"></script>-->
+	</head>
+
+	<body>
+		<script type="text/javascript" src="../static/js/main.js"></script>
+		<link rel="stylesheet" href="../static/css/style2.css">
+		<!--新增车系-->
+		<div id="cover">
+			<div id="cover-bg"></div>
+			<div id="cover-content">
+				<center id="motai">
+					<form action="carmodel" method="post">
+						<p style="font-size: 35px;" name="dotype" id="titel">新增参数</p>
+						<table style="font-size: 20px;">
+							<tr>
+								<th>名称：</th>
+								<th><input type="text" name="cartype" id="cartype" /></th>
+							</tr><br />
+							<tr>
+								<th>所属分类：</th>
+								<th><input type="text" name="brand" id="brand" /></th>
+							</tr><br />
+							<tr>
+								<th>是否生效：</th>
+								<th>
+									<div class="list-item">
+										<input type="checkbox" name="state" value="是" />是
+									</div>
+									<div class="list-item">
+										<input type="checkbox" name="state" value="否" />否
+									</div>
+								</th>
+							</tr><br />
+							<tr>
+								<th><input type="submit" id="do" onclick="add()" value="保存" /></th>
+								<th><input id="off" type="button" value="取消" /></th>
+							</tr><br />
+						</table>
+					</form>
+				</center>
+			</div>
+		</div>
+		<!--     内容      -->
+		<div id="content" class="white">
+			<h1><img src="../static/images/posts.png" alt="">参数管理</h1>
+			<div class="bloc">
+				<div class="title"> 记录
+					<a class="toggle"></a>
+				</div>
+
+				<div class="content">
+					<!--<div style="float: left;">
+				<P>品牌：</P></div><div style="float: left;"><span><select><option>1</option><option>2</option></select></span></div>
+				<div style="float: left;">
+				<P>类型：</P></div><div style="float: left;"><span><select><option>1</option><option>2</option></select></span></div>-->
+					<div style="float: left;">
+						<p>一级分类</p>
+					</div>
+					<!--<div style="float: left;">
+				<input type="button" value="搜索" ></div>-->
+					<table>
+						<thead>
+							<tr>
+								<th style="width: 50px;"><input type="checkbox" />全选 </th>
+								<th>序号</th>
+								<th>分类</th>
+								<th>名称</th>
+								<th>状态</th>
+								<th>是否为基础参数</th>
+								<th>功能</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th><input type="checkbox" /></th>
+								<th>1</th>
+								<th>xxxx</th>
+								<th>xxxx</th>
+								<th>生效</th>
+								<th>1</th>
+								<th>
+									<a id="editbtn" class="button">编辑</a>
+									<a class="button">删除</a>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+					<!--<div></div>-->
+					<div class="left input">
+						<!--<input type="checkbox" style="" />-->
+						<!--<span>全选</span>-->
+						<a id="add" class="button">新增参数</a>
+						<a class="button">删除</a>
+					</div>
+					<div class="pagination">
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="prev">«</a>
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">1</a>
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="current">2</a> ...
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a>
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">22</a>
+						<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#" class="next">»</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		<script type="text/javascript">
+			//			$('inputp[name=state]').click(function() {
+			//				$(this).attr('checked', 'checked').siblings().removeAttr('checked');
+			//			});
+
+			$(".list-item").click(function() {
+				$(".list-item").find("input[type='checkbox']").prop("checked", false); //每次点击前，将所有checkbox置为 未选中
+				var cobj = $(this).find("input[type='checkbox']"); //当前点击的checkbox
+				cobj.prop("checked", true); //将当前点击的checkbox置为选中状态
+				//over
+			})
+			//			var itemId = cobj.attr("id");
+			function edit() {
+				var cartype = $("#cartype").val();
+				var brand = $("#brand").val();
+				var factory = $("#factory").val();
+				var niankuan = $("#niankuan").val();
+				var name = $("#name").val();
+				var type = $("#type").val();
+
+				//		取值进行ajax
+				alert("进入edit");
+
+			}
+			$("#editbtn").click(function() {
+				$("#titel").html("修改参数");
+				//		取值放入编辑框
+				$("#cartype").val("1");
+				$("#brand").val("2");
+				$("#factory").val("3");
+				$("#name").val("4");
+				$("#niankuan").val("5");
+				$("#type").val("6");
+
+				$("#do").attr("onclick", "edit()");
+
+			});
+
+			function deletemore() {
+
+			}
+
+			function add() { //保存入库
+				var cartype = $("#cartype").val();
+				var brand = $("#brand").val();
+				var factory = $("#factory").val();
+				var name = $("#name").val();
+				var niankuan = $("#niankuan").val();
+				var type = $("#type").val();
+				alert("进入add");
+
+			}
+			$("#add").click(function() {
+				$("#titel").html("新增参数");
+				$("#cartype").val("");
+				$("#brand").val("");
+				$("#factory").val("");
+				$("#niankuan").val("");
+				$("#type").val("");
+				$("#name").val("");
+				$("#do").attr("onclick", "add()");
+
+			})
+
+			//触发模态框
+			$(function() {
+				$("#add").click(function(e) {
+					e.preventDefault();
+					$("#cover").css("display", "block");
+					$("#cover").animate({
+						width: "100%",
+						height: "100%",
+						top: "0",
+						left: "0"
+					}, 0);
+					$("#cover-content").animate({
+						width: "300px",
+						height: "300px",
+					}, 0);
+				});
+				$("#editbtn").click(function(e) {
+					e.preventDefault();
+					$("#cover").css("display", "block");
+					$("#cover").animate({
+						width: "100%",
+						height: "100%",
+						top: "0",
+						left: "0"
+					}, 0);
+					$("#cover-content").animate({
+						width: "300px",
+						height: "300px",
+					}, 0);
+				});
+				$("#cover-bg").click(function() {
+					$("#cover").removeAttr("style");
+					$("#cover-content").removeAttr("style");
+				});
+				$("#off").click(function() {
+					$("#cover").removeAttr("style");
+					$("#cover-content").removeAttr("style");
+				});
+			});
+		</script>
+	</body>
+
+</html>

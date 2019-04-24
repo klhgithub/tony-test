@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>会员详情</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/jquery.wysiwyg.old-school.css">
+
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../static/js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="../static/js/main.js"></script>
+    <link rel="stylesheet" href="../static/css/style2.css" />
+</head>
+<body>
+
+<!--     内容      -->
+<div id="content" class="white">
+    <h1><img src="../static/images/posts.png" alt="">会员详情</h1>
+    <div class="bloc">
+        <div style="font-size: 15px;float: left;">
+            <div style="margin-top: 20px;margin-left: 100px;">账号:13149106666</div>
+            <div style="margin-top: 20px;margin-left: 100px;">
+                <div style="float: left">昵称:刘太</div>
+                <div style="margin-left: 500px;">姓名:刘太</div>
+            </div>
+            <div style="margin-top: 20px;margin-left: 100px;">
+                <div style="float: left;">性别:男</div>
+                <div style="margin-left: 500px;">邮箱:222222222@163.com</div>
+            </div>
+            <div style="margin-top: 20px;margin-left: 100px;">积分:1444</div>
+            <div style="margin-top: 20px;margin-left: 100px;">标签:标签1 标签2 标签3 标签4 标签5</div>
+            <div style="margin-top: 20px;margin-left: 100px;">地址:陕西省西安市高新六路</div>
+            <div style="margin-top: 20px;margin-left: 100px;">注册时间:2091/4/12</div>
+        </div>
+        <div id="member_img" style="margin-left: 1000px;"><img src="../static/images/cheshi/1.jpg" alt="" style="height: 300px;width: 300px;"></div>
+    </div>
+    <div class="bloc">
+        <div style="font-size: 20px">
+            <a href="#" style="margin-left: 100px;">我的座驾</a>
+            <a href="#" style="margin-left: 100px;">我的活动</a>
+            <a href="#" style="margin-left: 100px;">我的积分</a>
+            <a href="#" style="margin-left: 100px;">资讯收藏</a>
+            <a href="#" style="margin-left: 100px;">关注车型</a>
+        </div>
+    </div>
+</div>
+<br>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+</body>
+<br>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>会员详情</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="jquery.wysiwyg.old-school.css" />
+    <link rel="stylesheet" href="mytab/mytab.css" />
+    <!--<script type="text/javascript" src="../static/mytab/mytab.js"></script>-->
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style2.css" />
+
+</head>
+<body>
+
+<!--     内容      -->
+<div id="content" class="white">
+    <h1><img src="images/posts.png" alt="">会员详情</h1>
+    <div class="bloc">
+        <div style="font-size: 15px;float: left;">
+            <div style="margin-top: 20px;margin-left: 100px;" th:text="'账号:'+${detail.username}">账号:13149106666</div>
+            <div style="margin-top: 20px;margin-left: 100px;">
+                <div style="float: left" th:text="'昵称:'+${detail.nickname}">昵称:刘太</div>
+                <div style="margin-left: 500px;" th:text="'姓名:'+${detail.name}">姓名:刘太</div>
+            </div>
+            <div style="margin-top: 20px;margin-left: 100px;">
+                <div style="float: left;">性别:男</div>
+                <div style="float: left;" th:if="${detail.gender==1}">性别:男</div>
+                <div style="float: left;" th:if="${detail.gender==0}">性别:男</div>
+                <div style="margin-left: 500px;"th:text="'邮箱:'+${detail.email}">邮箱:222222222@163.com</div>
+            </div>
+            <div style="margin-top: 20px;margin-left: 100px;"th:text="'积分:'+${count}">积分:1444</div>
+            <div style="margin-top: 20px;margin-left: 100px;">标签：<span th:each="tag:${tags}" th:text="${tag.name}+'  '"></span></div>
+            <div style="margin-top: 20px;margin-left: 100px;"th:text="'地址:'+${detail.address}">地址:陕西省西安市高新六路</div>
+            <div style="margin-top: 20px;margin-left: 100px;"th:text="'注册时间:'+${detail.register_time}">注册时间:2091/4/12</div>
+        </div>
+        <div id="member_img" style="margin-left: 1000px;"><img th:src="${detail.avatar_url}" src="cheshi/1.jpg" alt="" style="height: 300px;width: 300px;"></div>
+    </div>
+    <!--选项卡-->
+    <div class="bloc wrap">
+        <ul id="tab_t" style="font-size:20px;">
+            <li class="act">我的座驾</li>
+            <li>我的活动</li>
+            <li>我的积分</li>
+            <li>资讯收藏</li>
+            <!--<li>关注车型</li>-->
+        </ul>
+        <div id="tab_c" style="font-size: 25px;">
+            <!--卡片一-->
+            <div >
+                <span style="background-color: #E1E2E3;font-size: 25px;">  已有座驾</span><br/>
+                <span th:if="${mycars}!=null" th:each="car:${mycars}"> <img  width="500px;" height="300px;"th:src="${car.img_url}"  /><span th:text="${car.img_title}">奇瑞</span></span><br/>
+                <span th:if="${mycars}==null"><span>无</span></span>
+                <span style="background-color: #E1E2E3;"> 期望座驾</span><br/>
+                <span th:if="${likecars}!=null" th:each="likecar:${likecars}"><img  width="500px;" height="300px;" th:src="${likecar.img_url}" /><span th:text="${likecar.img_title}">奇瑞</span></span><br/>
+                <span th:if="${likecars}==null"><span>无</span></span>
+
+            </div>
+            <!--卡片二-->
+            <div class='hide'>
+                <!--<span style="background-color: #E1E2E3;">  参加的活动</span><br/>-->
+                <!--<img  width="500px;" height="300px;" /><span>活动1</span><br/>-->
+                <span style="background-color: #E1E2E3;"> 关注的互动</span><br/>
+                <span th:each="activi:${activis}"><img th:src="${activi.cover_pic}" width="500px;" height="300px;" /><span th:text="${activi.title}">活动1</span><br/>
+</span>
+            </div>
+            <!--卡片三-->
+            <div class='hide'>
+                <table width="200px;" >
+                    <tr>
+                        <th th:text="'总积分：'+${count}" style="width: 300px;">总积分：1565</th>
+                        <th></th>
+                    </tr>
+                    <tr th:each="point:${points}" style="border:1px solid #2D2D2D">
+                        <th th:text="${point.createTime}"style="border:1px solid #2D2D2D">2017</th>
+                        <th th:text="${point.description}"style="border:1px solid #2D2D2D">80积分</th>
+                    </tr>
+
+                </table>
+
+            </div>
+            <!--卡片四-->
+            <div class='hide'>
+                <span th:each="artic:${artics}"><img th:src="${artic.cover_pic}" width="500px;" height="300px;" /><span th:text="${artic.title}">奇瑞</span></span><br/>
+
+
+            </div>
+            <!--卡片五-->
+            <!--<div class='hide'>-->
+                <!--<span th:each="favcar:${favcars}"><img th:src="${favcar.img_url}" width="500px;" height="300px;" /><span th:text="${favcar.name}">奇瑞</span><br/>-->
+                <!--</span>-->
+
+            <!--</div>-->
+        </div>
+    </div>
+    <!--选项卡结束-->
+    <!--<div class="bloc">-->
+        <!--<div style="font-size: 20px">-->
+            <!--<a href="#" style="margin-left: 100px;">我的座驾</a>-->
+            <!--<a href="#" style="margin-left: 100px;">我的活动</a>-->
+            <!--<a href="#" style="margin-left: 100px;">我的积分</a>-->
+            <!--<a href="#" style="margin-left: 100px;">资讯收藏</a>-->
+            <!--<a href="#" style="margin-left: 100px;">关注车型</a>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+<br/>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+
+</body>
+<br/>
+<script type="text/javascript">
+    window.onload=function tab(tab_t,tab_t_tag,tab_c,tag_c_tag,evt){
+        var tab_t=document.getElementById('tab_t');
+        var tab_t_li=tab_t.getElementsByTagName('li');
+        var tab_c=document.getElementById('tab_c');
+        var tab_c_li=tab_c.getElementsByTagName('div');
+        var len=tab_t_li.length;
+        var i=0;
+        for(i=0;i<len;i++){
+            tab_t_li[i].index=i;
+            tab_t_li[i].onclick=function(){
+                for(j=0;j<len;j++){
+                    tab_t_li[j].className='';
+                    tab_c_li[j].className='hide';
+                }
+                tab_t_li[this.index].className='act';
+                tab_c_li[this.index].className='';
+            }
+        }
+    }
+    // tab("tab_t","li","tab_c","div","onmouseover");
+
+</script>
+</html>

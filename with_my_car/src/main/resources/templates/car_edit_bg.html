@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>编辑车款</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/jquery.wysiwyg.old-school.css"/>
+
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style2.css"/>
+
+</head>
+<body class="modal white">
+
+
+<!--     内容      -->
+<div id="content" class="white" style="margin-left: 300px;margin-top: 42px; min-height: 500px;">
+    <div class="bloc">
+        <div class="title">编辑车款<a class="toggle"></a></div>
+        <div class="content" style="height:500px;">
+            <form  method="POST" th:each="model:${models}" th:action="'car_doedit_bg?id='+${model.id}">
+                <div class="input">
+                    <label for="input2">车型名称</label>
+                    <input type="text"  id="input2" name="all_spell" th:value="${model.all_spell}" width="50px"/>
+                    <!--<input type="hidden" id="bname" th:value="${model.all_spell}" name="bname"/>-->
+                </div>
+                <div class="input">
+                    <label>所属品牌</label>
+                    <select >
+                        <option value="0">请选择品牌</option>
+                        <option class="sel" onclick="ff()" th:each="brand:${brands}" th:text="${brand.brand_name}">奥迪</option>
+                    </select>
+                    <input type="hidden" name="brand_name" th:value="${model.brand_name}" />
+                </div>
+                <!--<div class="input">-->
+                    <!--<label for="input3">所属厂商</label>-->
+                    <!--<input type="file" id="input3" name="factory" th:text="${model.year}" width="50px">-->
+                <!--</div>-->
+                <div class="input">
+                    <label>所属车系</label>
+                    <select >
+                        <option value="0">请选择车系</option>
+                        <option class="sel" onclick="ff()" th:each="name:${names}" th:text="${name.name}">奥迪</option>
+                    </select>
+                    <input type="hidden" th:value="${model.name}" name="name" id="name" />
+                </div>
+                <div class="input">
+                    <label>所属年款</label>
+                    <select >
+                        <option value="0">请选择年款</option>
+                        <option class="sel" onclick="ff()" th:each="year:${years}" th:text="${year.year}">奥迪</option>
+                    </select>
+                    <input type="hidden" th:value="${model.year}" name="year" id="year" />
+                </div>
+                <div class="input">
+                    <label>类型</label>
+                    <select >
+                        <option value="0">请选择类型</option>
+                        <option class="sel" onclick="ff()" th:each="type:${types}" th:text="${type.body_form_name}">奥迪</option>
+                    </select>
+                    <input type="hidden" th:value="${model.body_form_name}" name="body_form_name" id="body_form_name" />
+                </div>
+                <div class="submit">
+                    <input type="submit" name="button" value="确定" />
+                    <input type="button" name="button" value="取消" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br/>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+</body>
+<script>
+
+
+
+
+</script>
+</html>

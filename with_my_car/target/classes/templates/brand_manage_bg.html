@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>品牌管理</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/jquery.wysiwyg.old-school.css" />
+    <link rel="stylesheet" href="css/motai.css">
+    <!-- jQuery AND jQueryUI -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/min.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style2.css" />
+</head>
+<body>
+<!--新增车系-->
+<div id="cover">
+    <div id="cover-bg"></div>
+    <div id="cover-content">
+        <center id="motai">
+            <!--<form action="carmodel" method="post">-->
+                <p style="font-size: 35px;" name="dotype" id="titel">新增品牌</p>
+                <table style="font-size: 20px;">
+                    <tr>
+                        <th>品牌名称：</th>
+                        <th><input type="text" name="brandname" id="brandname" /></th>
+                    </tr><br />
+                    <tr>
+                        <th>品牌logo：</th>
+                        <th><input type="file" name="logourl" id="logourl" /></th>
+                    </tr><br />
+                    <tr>
+                        <th></th>
+                        <th><img src="" id="img" /> </th>
+
+                    </tr>
+                    <tr>
+                        <th><input type="submit" id="do" onclick="addbtn()" value="保存" /></th>
+                        <th><input id="off" type="button" value="取消" /></th>
+                    </tr><br />
+                </table>
+            <!--</form>-->
+        </center>
+    </div>
+</div>
+
+<!--     内容      -->
+<div id="content" class="white">
+    <h1><img src="images/posts.png" alt="">品牌管理</h1>
+
+    <!--操作栏-->
+    <form id="form3" action="sousuo_bg" method="post">
+
+    <div class="bloc">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        国家:<select id="sel">
+            <option th:each="c:${countrys}" th:text="${c.country_name}" th:value="${c.country_name}">中国</option>
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="hidden" id="country" name="country" value="中国" />
+        <input type="text" name="search" placeholder="品牌名称" />&nbsp;&nbsp;&nbsp;
+            <input type="button" onclick="sear()" value="搜索" />
+        <!--<button style="margin-left: 800px;">
+            <a href="brand_manage_bg.html" class="shortcut zoombox w500 h320"> <img src="images/glyph-add.png" alt="" width="24" height="24">
+            添加品牌 </a></button>-->
+        <!--<button style="margin-left: 800px;"><a href="brand_add_bg.html" id="add" >新增品牌</a></button>-->
+    </div>
+    </form>
+
+
+    <div class="bloc">
+        <div class="title"> 配件列表 <a  class="toggle"></a>
+        </div>
+        <div class="content">
+            <table>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>品牌名称</th>
+                    <th>品牌代码</th>
+                    <th>logo</th>
+                    <th>创建时间</th>
+                    <th>功能</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="brand:${brands}">
+                    <td th:text="${brand.id}">蓄电池</td>
+                    <td><a th:text="${brand.brandName}">英朗TX</a></td>
+                    <td th:text="${brand.brandId}">12.00</td>
+                    <td ><img th:src="${brand.logoUrl}"/></td>
+                    <td th:text="${brand.createTime}">2019/4/12</td>
+                    <td>
+                        <a class="button editbtn" th:onclick="|ff(${brand.id})|" >编辑</a>
+                        <a class="button" th:href="'delCarMakeById?id='+${brand.id}" >删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button class="prev">«</button>
+                <span th:each="num:${nums}">
+                <a th:if="${num}==${page}" th:text="${num}" th:href="'brand_manage_bg?pageNum='+${num}"  class='current'></a>
+                 <a th:if="${num}!=${page}" th:text="${num}" th:href="'brand_manage_bg?pageNum='+${num}"  ></a>
+                </span>
+                <button  class="next">»</button>
+            </div>
+            <form id="pageform" action="brand_manage_bg" method="post">
+                <input type="hidden" th:value="${page}" name="pageNum" />
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+<script type="text/javascript">
+    $(".next").click(function(){
+        $("input[name='pageNum']").val(Number($("input[name='pageNum']").val())+1);
+        $("#pageform").submit();
+    })
+    $(".prev").click(function(){
+        $("input[name='pageNum']").val(Number($("input[name='pageNum']").val())-1);
+        $("#pageform").submit();
+    })
+    $("#sel").change(function(){
+        $("#country").val($("#sel option:selected").val());
+    })
+    function sear(){
+        var search=$("#sel option:selected").val();
+        // alert(search);
+        $("#country").val(search);
+        $("#form3").submit();
+    }
+    function edit(id) {
+        var brandname = $("#brandname").val();
+        var url = $("#logourl").val();
+        // alert(id+"进入edit"+brandname+url);
+        console.log(brandname+url);
+        $.ajax({
+            type:'POST',
+            url:'/editOneBrand_bg',
+            data:{"id":id,"brandName":brandname,"logoUrl":url},
+            success:function(dat){
+                console.log(dat);
+                if(dat){
+                    $("#cover").removeAttr("style");
+                    $("#cover-content").removeAttr("style");
+                }
+
+            }
+
+        })
+
+    }
+    function ff(id){
+        $.ajax({
+            type:'POST',
+            url:'getOneMakeById',
+            data:{"id":id},
+            success:function(dat){
+                console.log(dat);
+                $.each(dat,function(i,make){
+                    $("#titel").html("修改车系");
+                    //		取值放入编辑框
+                    $("#brandname").val(make.brandName);
+                    $("#img").attr("src",make.logoUrl);
+
+
+                    $("#do").attr("onclick", "edit("+id+")");
+
+
+                })
+
+            }
+
+        })
+
+
+
+
+    }
+    // $(".editbtn").click(function() {
+    //
+    //
+    // });
+
+    function deletemore() {
+
+    }
+
+    function add() { //保存入库
+        var brandname = $("#brandname").val();
+        var url = $("#logourl").val();
+        // alert("进入add");
+        $.ajax({
+            type:'POST',
+            url:'addOneBrand_bg',
+            data:{"brandName":brandname,"logoUrl":url},
+            success:function(dat){
+                console.log(dat);
+                if(dat){
+                    $("#cover").removeAttr("style");
+                    $("#cover-content").removeAttr("style");
+                }
+            }
+
+        })
+
+    }
+    $("#add").click(function() {
+        $("#titel").html("新增车系");
+        $("#brandname").val("");
+        $("#img").attr("src","");
+        $("#do").attr("onclick", "add()");
+
+    })
+
+    //触发模态框
+    $(function() {
+        $("#add").click(function(e) {
+            e.preventDefault();
+            $("#cover").css("display", "block");
+            $("#cover").animate({
+                width: "100%",
+                height: "100%",
+                top: "0",
+                left: "0"
+            }, 0);
+            $("#cover-content").animate({
+                width: "400px",
+                height: "300px",
+            }, 0);
+        });
+        $(".editbtn").click(function(e) {
+            e.preventDefault();
+            $("#cover").css("display", "block");
+            $("#cover").animate({
+                width: "100%",
+                height: "100%",
+                top: "0",
+                left: "0"
+            }, 0);
+            $("#cover-content").animate({
+                width: "400px",
+                height: "300px",
+            }, 0);
+        });
+        $("#cover-bg").click(function() {
+            $("#cover").removeAttr("style");
+            $("#cover-content").removeAttr("style");
+        });
+        $("#off").click(function() {
+            $("#cover").removeAttr("style");
+            $("#cover-content").removeAttr("style");
+        });
+    });
+</script>
+</body>
+<br>
+</html>

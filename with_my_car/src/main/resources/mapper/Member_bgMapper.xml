@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.with_my_car.mapper.Memb_bgMapper" >
+<select id="getAllMember_bg" resultType="com.qf.with_my_car.dto.Member_bg">
+  select m.id,m.username,mp.nickname,mp.name,mp.gender,mp.register_time from member m,member_profile mp where m.id=mp.id
+</select>
+  <!--<select id="getAllDetails" resultType="com.qf.with_my_car.dto.Member_Detail_bg">-->
+    <!--select-->
+  <!--</select>-->
+    <resultMap id="CarMake" type="com.qf.with_my_car.pojo.CarMake_bg">
+        <id column="id"  property="id"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="brand_name" property="brandName"/>
+        <result column="name" property="name"/>
+        <result column="other_Name" property="otherName"/>
+        <result column="english_Name" property="englishName"/>
+        <result column="manufacturer_Id" property="manufacturerId"/>
+        <result column="country_Id" property="countryId"/>
+        <result column="phone" property="phone"/>
+        <result column="website" property="website"/>
+        <result column="logo_Url" property="logoUrl"/>
+        <result column="spell" property="spell"/>
+        <result column="introduction" property="introduction"/>
+        <result column="is_Enabled" property="isEnabled"/>
+        <result column="is_Removed" property="isRemoved"/>
+        <result column="create_Time" property="createTime"/>
+        <result column="update_Time" property="updateTime"/>
+        <result column="sync_Time" property="syncTime"/>
+    </resultMap>
+
+<select id="getAllTags" parameterType="int" resultType="com.qf.with_my_car.dto.Tag_bgdto">
+    select
+    distinct
+       tag.id,
+        tag.name
+    from
+        tag,
+        (select mt.tag_id from member_tag mt where mt.member_id=#{id})t1
+    where
+        tag.id in (select mt.tag_id from member_tag mt where mt.member_id=#{id});
+
+--   select DISTINCT ar.`title` from
+-- article ar ,
+-- (select art.`article_id` from article_tag art,
+-- (select mt.tag_id from member_tag mt where mt.member_id=${id})t1
+-- where art.`tag_id` in
+-- (select mt.tag_id from member_tag mt where mt.member_id=${id}))t2
+-- where ar.id in
+-- (select art.`article_id` from article_tag art,
+-- (select mt.tag_id from member_tag mt where mt.member_id=${id})t1 where art.`tag_id` in
+-- (select mt.tag_id from member_tag mt where mt.member_id=${id}))
+</select>
+  <select id="getMembDetails" resultType="com.qf.with_my_car.dto.Member_Detail_bg">
+    select mp.`id`,m.`username`,mp.`nickname`,mp.`name`,mp.`avatar_url`,mp.email,mp.address,mp.register_time
+    from member_profile mp,member m where mp.id=#{id} and mp.id=m.id
+  </select>
+    <select id="getCarImg" resultType="com.qf.with_my_car.dto.CarDtobg">
+        select img_url,img_title from car_image where car_id=#{id}
+    </select>
+    <select id="getOneBrand_bg" resultType="com.qf.with_my_car.pojo.CarMake_bg">
+        select * from car_make where id=#{id}
+    </select>
+    <insert id="addOneBrand_bg" >
+        insert into car_make(brand_name,logo_url,create_time) values (#{brandName},#{logoUrl},#{createTime})
+    </insert>
+    <select id="getAllCountry" resultType="com.qf.with_my_car.dto.CountryDto_bg">
+         select distinct country_name from car
+    </select>
+    <select id="mohusousuo_bg" resultMap="CarMake">
+        select distinct * from (select cm.* from car_make cm,car c where cm.country_id=c.country_id and c.country_name=#{country})t where t.brand_name like concat(concat('%',#{search}),'%')
+    </select>
+    <select id="getAllBran" resultType="com.qf.with_my_car.dto.BranDtobg">
+        select distinct brand_name from car_make where brand_name is not null
+    </select>
+    <select id="getAllModelBrands" resultType="com.qf.with_my_car.dto.ModelBrandDtobg">
+        select distinct brand_name from car_model
+    </select>
+    <select id="getAllModelTypes" resultType="com.qf.with_my_car.dto.ModelTypeDtobg">
+        select distinct body_form_name from car_model
+    </select>
+    <select id="getAllCarType" resultType="com.qf.with_my_car.dto.CarTypeDto_bg">
+      select DISTINCT
+cm.id,cm.all_spell,cm.brand_name,cmi.`year`,cm.name,cm.body_form_name
+from
+car_model cm,car_model_image cmi
+where
+cm.level=cmi.model_id
+    </select>
+    <select id="getAllModelName" resultType="com.qf.with_my_car.dto.ModelNameDto_bg">
+        select distinct name from car_model
+    </select>
+    <select id="getOneCarTypeById" resultType="com.qf.with_my_car.dto.CarTypeDto_bg">
+        select distinct
+cm.id,cm.all_spell,cm.brand_name,cmi.`year`,cm.name,cm.body_form_name
+from
+car_model cm,car_model_image cmi
+where
+cm.level=cmi.model_id and cm.id=#{id}
+    </select>
+    <select id="getAllYears" resultType="com.qf.with_my_car.dto.YearDto_bg">
+        select distinct `year` from car_model_image
+    </select>
+    <insert id="addOneCarType" parameterType="com.qf.with_my_car.dto.CarTypeDto_bg">
+        insert into car_model(id,all_spell,brand_name,`name`,body_form_name) values(null,#{all_spell},#{brand_name},#{name},#{body_form_name})
+    </insert>
+    <select id="getCarTypeId" parameterType="com.qf.with_my_car.dto.CarTypeDto_bg" resultType="int">
+        select id from car_model where all_spell=#{all_spell}and brand_name=#{brand_name} and `name`=#{name} and body_form_name=#{body_form_name}
+    </select>
+    <insert id="addOneCarTypeYear" parameterType="com.qf.with_my_car.dto.CarTypeDto_bg">
+        insert into car_model_image(id,model_id,`year`) values(null,#{id},#{year})
+    </insert>
+    <update id="editCarType" parameterType="com.qf.with_my_car.dto.CarTypeDto_bg">
+        update car_model set all_spell=#{all_spell}, brand_name=#{brand_name} , `name`=#{name} , body_form_name=#{body_form_name} where id=#{id}
+    </update>
+    <update id="editCarModel" parameterType="com.qf.with_my_car.pojo.CarModel_bg">
+        update car_model set name=#{name},body_form_name=#{bodyFormName},brand_name=#{brandName},make_name=#{makeName} where id=#{id}
+    </update>
+    <delete id="delModelImageByd" parameterType="int">
+        delete from car_model_image where model_id=#{id}
+    </delete>
+    <delete id="delCarTypeById" parameterType="int">
+        delete from car_model where id=${id}
+    </delete>
+
+    <update id="updateCarTypeLevel" parameterType="com.qf.with_my_car.dto.CarTypeDto_bg">
+        update car_model set `level`=#{id} where id=#{id}
+    </update>
+    <select id="getActiviById" parameterType="int" resultType="com.qf.with_my_car.dto.FavActiviDto_bg">
+        select
+a.title,a.cover_pic
+from article a,
+(select content_id from member_fav mf where member_id=#{id} and fav_type=1)t1
+where a.id in (select content_id from member_fav mf where member_id=#{id} and fav_type=1)
+
+    </select>
+    <select id="getArticById"  parameterType="int" resultType="com.qf.with_my_car.dto.FavActiviDto_bg">
+        select
+	a.title,a.cover_pic
+from
+activity a,
+(select content_id from member_fav mf where member_id=#{id} and fav_type=2)t1
+where a.id in(select content_id from member_fav mf where member_id=#{id} and fav_type=2)
+    </select>
+    <select id="getFavCarById"  parameterType="int" resultType="com.qf.with_my_car.dto.FavActiviDto_bg">
+      select
+        t2.name,cmi.img_url
+        from car_model_image cmi,(select cm.`name`,cm.`level` from car_model cm,
+        (select content_id from member_fav mf where member_id=#{id} and fav_type=3)t1 where cm.id
+        in (select content_id from member_fav mf where member_id=#{id} and fav_type=3))t2
+        where t2.`level`=cmi.model_id and cmi.img_url is not null
+    </select>
+    <delete id="delCarMakeById" parameterType="int">
+        delete from car_make where id=#{id}
+    </delete>
+    <delete id="delModelById_bg" parameterType="int">
+        delete from car_model where id=#{id}
+    </delete>
+    <insert id="addCarModel" parameterType="com.qf.with_my_car.pojo.CarModel_bg">
+        insert into car_model(id,`name`,Body_Form_Name,brand_name,make_name,create_time) values(null,#{name},#{bodyFormName},#{brandName},#{makeName},#{createTime})
+    </insert>
+
+
+</mapper>

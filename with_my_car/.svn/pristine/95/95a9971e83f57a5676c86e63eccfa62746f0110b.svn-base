@@ -1,0 +1,13 @@
+package com.qf.with_my_car;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WithMyCarApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(WithMyCarApplication.class, args);
+    }
+
+}
